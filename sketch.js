@@ -83,6 +83,7 @@ function draw() {
   for (var j = 0; j < particles.length; j++) {
    
      particles[j].display();
+    
    }
    for (var k = 0; k < divisions.length; k++) {
      
@@ -105,17 +106,18 @@ function mousePressed(){
     particles.push(new Particle(random(width/2-30, width/2+30), 10,10));
   }
 }
-if(particle!==null){
-  
-  if(particle.body.position.y>700){
-    if(particle.body.position.x<300){
-      score=score+500
-      particle.display()
-      particle=null;
-      
-    }
-    else if(particle.body.position.x>300&&particle.body.position.y<600){
-      score=score+100
-    }
-  }
-}
+if(particle!=null) {
+  particle.display();
+   if (particle.body.position.y>760) {
+      if (particle.body.position.x < 300) { 
+        score=score+500; 
+        particle=null; 
+        if ( count>= 5) gameState ="end"; }
+         else if (particle.body.position.x < 600 && particle.body.position.x > 301 ) {
+            score = score + 100;
+             particle=null;
+              if ( count>= 5) gameState ="end"; } 
+              else if (particle.body.position.x < 900 && particle.body.position.x > 601 ) {
+                 score = score + 200;
+                  particle=null;
+                   if ( count>= 5) gameState ="end"; } } }
